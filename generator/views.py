@@ -16,6 +16,13 @@ def password(request):
 
     length = int(request.GET.get('length'))
 
+    if request.GET.get('uppercase'):
+        characters.extend(list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+    elif request.GET.get('special'):
+        characters.extend(list('_!-@#$%^&*()'))
+    elif request.GET.get('numbers'):
+        characters.extend(list('0123456789'))
+
     for x in range(length):
         generated_password += random.choice(characters)
 
